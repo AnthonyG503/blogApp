@@ -1,0 +1,150 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Form Container */
+
+.blog-header {
+  text-align: center;
+  font: bold;
+  background-color: red;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  color: #0056b3;
+}
+
+.form-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px ;
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-card h3 {
+  margin: 0 0 20px;
+  color: #333;
+  font-size: 1.5em;
+}
+
+/* Form Inputs */
+.form-group {
+  margin-bottom: 20px;
+
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #090707;
+  font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+/* Checkbox */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.checkbox-group label {
+  margin: 0;
+  color: #555;
+}
+
+/* Buttons */
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Create button */
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+}
+ /* Cancel */
+.btn-secondary {
+  background: #f1f1f1;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #ddd;
+}
+
+/* Blog List */
+h3 {
+  margin-top: 20px;
+}
+
+.blog-list {
+  max-width: 600px;
+}
+
+.blog-item {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.blog-summary {
+  font-size: 16px;
+}
+
+.blog-details {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.blog-details p {
+  margin: 5px 0;
+}
+
+button {
+  margin-right: 5px;
+}

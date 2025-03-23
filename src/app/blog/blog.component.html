@@ -1,0 +1,82 @@
+<div class="blog-header">
+  <h2>Blog Management</h2>
+</div>
+
+
+<!-- Form for Create/Update -->
+<div class="form-container">
+  <div class="form-card">
+    <h3>{{ isEditMode ? 'Edit Blog' : 'Create a New Blog' }}</h3>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          [(ngModel)]="selectedBlog.username"
+          name="username"
+          placeholder="Enter your username"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="blogpost">Blog Post</label>
+        <textarea
+          id="blogpost"
+          [(ngModel)]="selectedBlog.blogpost"
+          name="blogpost"
+          placeholder="Write your blog post here..."
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="selectedBlog.email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+      <div class="form-group checkbox-group">
+        <input
+          type="checkbox"
+          id="terms"
+          [(ngModel)]="selectedBlog.terms"
+          name="terms"
+        />
+        <label for="terms">I agree to the terms</label>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">
+          {{ isEditMode ? 'Update' : 'Create' }}
+        </button>
+        <button type="button" class="btn-secondary" (click)="resetForm()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Blog List with expandable details (botton of the page) -->
+<h3>Existing Blogs</h3>
+<div class="blog-list">
+  <div *ngFor="let blog of blogs" class="blog-item" (click)="toggleExpand(blog.id)">
+    <div class="blog-summary">
+      <strong>{{ blog.username }}</strong> -
+      {{ blog.blogpost | slice:0:50 }}{{ blog.blogpost.length > 50 ? '...' : '' }}
+    </div>
+    <div *ngIf="expandedBlogId === blog.id" class="blog-details">
+      <p><strong>ID:</strong> {{ blog.id }}</p>
+      <p><strong>Username:</strong> {{ blog.username }}</p>
+      <p><strong>Blog Post:</strong> {{ blog.blogpost }}</p>
+      <p><strong>Email:</strong> {{ blog.email }}</p>
+      <p><strong>Terms Accepted:</strong> {{ blog.terms ? 'Yes' : 'No' }}</p>
+      <button (click)="editBlog(blog); $event.stopPropagation()">Edit</button>
+      <button (click)="deleteBlog(blog.id); $event.stopPropagation()">Delete</button>
+    </div>
+  </div>
+</div>
