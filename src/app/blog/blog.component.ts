@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BlogService } from './blog.service';
 import { Blog } from './blog.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -12,59 +13,37 @@ import { Blog } from './blog.model';
   styleUrls: ['./blog.component.css'],
 })
 export class BlogComponent implements OnInit {
-  blogs: Blog[] = [];
-  selectedBlog: Blog = { username: '', blogpost: '', email: '', terms: false };
+  selectedBlog: Blog = { username: '', blogpost: '', email: '', terms: false, category: '' };
   isEditMode = false;
-  expandedBlogId: number | null | undefined = null; // include undefined ("id?")
+  formSubmitted = false;
+  categories = ['Tech', 'Lifestyle', 'Travel', 'Food', 'Other'];
 
-  constructor(private blogService: BlogService) {}
+  constructor(private blogService: BlogService, private router: Router) {}
 
   ngOnInit(): void {
-    this.loadBlogs();
-  }
-
-  loadBlogs(): void {
-    this.blogService.getAllBlogs().subscribe((data) => {
-      this.blogs = data;
-    });
+    const state = history.state as { blog: Blog };
+    if (state?.blog) {
+      this.selectedBlog = { ...state.blog };
+      this.isEditMode = true;
+    }
   }
 
   onSubmit(): void {
-    if (this.isEditMode && this.selectedBlog.id) {
-      this.blogService.updateBlog(this.selectedBlog.id, this.selectedBlog).subscribe(() => {
-        this.loadBlogs();
-        this.resetForm();
-      });
-    } else {
-      this.blogService.createBlog(this.selectedBlog).subscribe(() => {
-        this.loadBlogs();
-        this.resetForm();
-      });
-    }
-  }
-    //CRUD features
-    
-  editBlog(blog: Blog): void {
-    this.selectedBlog = { ...blog };
-    this.isEditMode = true;
-    this.expandedBlogId = null;
-  }
-
-  deleteBlog(id?: number): void {
-    if (id) {
-      this.blogService.deleteBlog(id).subscribe(() => {
-        this.loadBlogs();
-        this.expandedBlogId = null;
-      });
+    this.formSubmitted = true;
+    if (this.selectedBlog.username && this.selectedBlog.blogpost && this.selectedBlog.email) {
+      if (this.isEditMode && this.selectedBlog.id) {
+        this.blogService.updateBlog(this.selectedBlog.id, this.selectedBlog).subscribe(() => {
+          this.router.navigate(['/']);
+        });
+      } else {
+        this.blogService.createBlog(this.selectedBlog).subscribe(() => {
+          this.router.navigate(['/']);
+        });
+      }
     }
   }
 
   resetForm(): void {
-    this.selectedBlog = { username: '', blogpost: '', email: '', terms: false };
-    this.isEditMode = false;
-  }
-
-  toggleExpand(blogId?: number): void {
-    this.expandedBlogId = this.expandedBlogId === blogId ? null : blogId;
+    this.router.navigate(['/']); // Navigate back to homepage instead of clearing form
   }
 }

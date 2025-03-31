@@ -1,92 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Form Container */
+/* Form Styles */
+.home-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background: url('/assets/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+}
 
-.blog-header {
+.home-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 0;
+}
+
+h1 {
   text-align: center;
-  font: bold;
-  background-color: red;
-}
-
-.form-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-  color: #0056b3;
-}
-
-.form-card {
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px ;
-  width: 100%;
-  max-width: 500px;
-}
-
-.form-card h3 {
-  margin: 0 0 20px;
   color: #333;
-  font-size: 1.5em;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
 }
 
-/* Form Inputs */
-.form-group {
+p {
+  text-align: center;
+  color: #555;
+  font-size: 1.2em;
   margin-bottom: 20px;
-
+  position: relative;
+  z-index: 1;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  color: #090707;
-  font-weight: 500;
+.search-container {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  display: flex;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group textarea {
-  width: 100%;
+.search-container input {
+  flex: 1;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 1em;
-  transition: border-color 0.3s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: #007bff;
-  outline: none;
+.search-container button {
+  padding: 10px 20px;
 }
 
-.form-group textarea {
-  height: 120px;
-  resize: vertical;
+.action-container {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
 }
 
-/* Checkbox */
-.checkbox-group {
-  display: flex;
-  align-items: center;
-}
-
-.checkbox-group input[type="checkbox"] {
-  margin-right: 10px;
-}
-
-.checkbox-group label {
-  margin: 0;
-  color: #555;
-}
-
-/* Buttons */
-.form-actions {
-  display: flex;
-  gap: 10px;
-}
-
-/* Create button */
 .btn-primary {
   background: #007bff;
   color: #fff;
@@ -100,7 +80,7 @@
 .btn-primary:hover {
   background: #0056b3;
 }
- /* Cancel */
+
 .btn-secondary {
   background: #f1f1f1;
   color: #333;
@@ -115,36 +95,309 @@
   background: #ddd;
 }
 
-/* Blog List */
-h3 {
-  margin-top: 20px;
-}
-
 .blog-list {
-  max-width: 600px;
+  position: relative;
+  z-index: 1;
 }
 
 .blog-item {
   border: 1px solid #ddd;
   margin-bottom: 10px;
-  padding: 10px;
-  cursor: pointer;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
 }
 
 .blog-summary {
   font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer; /* Indicate clickability */
+  transition: color 0.3s ease;
+}
+
+.blog-summary:hover {
+  color: #007bff; /* Hover effect */
+}
+
+.category {
+  font-size: 0.9em;
+  color: #666;
+  margin-left: 10px;
 }
 
 .blog-details {
+  padding: 10px 0;
+}
+
+.comment-section {
   margin-top: 10px;
-  padding: 10px;
-  background-color: #f9f9f9;
 }
 
-.blog-details p {
+.comment-section h4 {
+  margin: 10px 0 5px;
+  font-size: 1.1em;
+}
+
+.comment-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-section li {
   margin: 5px 0;
+  padding: 5px;
+  background: #f9f9f9;
+  border-radius: 3px;
 }
 
-button {
-  margin-right: 5px;
+.comment-section input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.blog-actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+/* form styles*/
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  min-height: 100vh;
+  background: url('/assets/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+.form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 0;
+}
+
+.form-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  z-index: 1;
+}
+
+.form-card h3 {
+  margin: 0 0 20px;
+  color: #333;
+  font-size: 1.5em;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.checkbox-group label {
+  margin: 0;
+  color: #555;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+.btn-secondary {
+  background: #f1f1f1;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #ddd;
+}
+
+.error {
+  color: #d9534f;
+  font-size: 0.9em;
+  margin-top: 5px;
+  display: block;
+}
+
+/*detailed blog */
+
+.detail-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  background: url('/assets/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+}
+
+.detail-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7); 
+  z-index: 0;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+p {
+  color: #555;
+  margin: 10px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.blog-content {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.comment-section {
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.comment-section h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.comment-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-section li {
+  margin: 5px 0;
+  padding: 5px;
+  background: #f9f9f9;
+  border-radius: 3px;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+.btn-secondary {
+  background: #f1f1f1;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-secondary:hover {
+  background: #ddd;
+}
+
+.blog-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
 }

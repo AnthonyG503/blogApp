@@ -1,0 +1,23 @@
+<div class="detail-container" *ngIf="blog">
+  <h2>{{ blog.username }}'s Blog Post</h2>
+  <p><strong>Category:</strong> {{ blog.category || 'Uncategorized' }}</p>
+  <p><strong>Posted On:</strong> {{ blog.createdAt | date:'medium' }}</p>
+  <div class="blog-content">
+    <p>{{ blog.blogpost }}</p>
+  </div>
+  <div class="comment-section">
+    <h3>Comments</h3>
+    <ul>
+      <li *ngFor="let comment of blog.comments">{{ comment }}</li>
+      <li *ngIf="!blog.comments || blog.comments.length === 0">No comments yet</li>
+    </ul>
+  </div>
+  <div class="blog-actions">
+    <button class="btn-primary" (click)="editBlog()">Edit</button>
+    <button class="btn-secondary" (click)="deleteBlog()">Delete</button>
+    <button class="btn-primary" (click)="goBack()">Back to Home</button>
+  </div>
+</div>
+<div class="detail-container" *ngIf="!blog">
+  <p>Loading blog post...</p>
+</div>

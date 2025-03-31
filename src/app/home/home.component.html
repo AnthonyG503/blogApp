@@ -1,0 +1,53 @@
+<div class="home-container">
+  <h1>Blog Community</h1>
+  <p>{{ welcomeMessage }}</p>
+
+  <!-- Search Bar with Button -->
+  <div class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Search blogs by username, content, or category..."
+    />
+    <button class="btn-primary" (click)="searchBlogs()">Search</button>
+  </div>
+
+  <!-- Create Blog Button -->
+  <div class="action-container">
+    <button class="btn-primary" (click)="createBlog()">Create New Blog</button>
+  </div>
+
+  <!-- Blog List -->
+  <div class="blog-list">
+    <div *ngFor="let blog of filteredBlogs" class="blog-item">
+      <div class="blog-summary" (click)="viewBlog(blog.id)">
+        <strong>{{ blog.username }}</strong> -
+        {{ blog.blogpost | slice:0:50 }}{{ blog.blogpost.length > 50 ? '...' : '' }}
+        <span class="category">Category: {{ blog.category || 'Uncategorized' }}</span>
+      </div>
+      <div class="blog-details">
+        <p><strong>Posted On:</strong> {{ blog.createdAt | date:'medium' }}</p>
+        <p>{{ blog.blogpost }}</p>
+        <!-- Comment Section -->
+        <div class="comment-section">
+          <h4>Comments</h4>
+          <ul>
+            <li *ngFor="let comment of blog.comments">{{ comment }}</li>
+            <li *ngIf="!blog.comments || blog.comments.length === 0">No comments yet</li>
+          </ul>
+          <input
+            #commentInput
+            type="text"
+            placeholder="Add a comment..."
+            (keyup.enter)="addComment(blog, commentInput.value); commentInput.value=''"
+          />
+        </div>
+        <!-- Edit and Delete Buttons -->
+        <div class="blog-actions">
+          <button class="btn-primary" (click)="editBlog(blog)">Edit</button>
+          <button class="btn-secondary" (click)="deleteBlog(blog.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
